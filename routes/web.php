@@ -18,3 +18,7 @@ Route::get('/', function () {
 Route::get('/nosaltres', function () {
     return view('menu/nosaltres');
 });
+
+Route::get('/nivells', function () {
+    return view('nivells/form');
+});

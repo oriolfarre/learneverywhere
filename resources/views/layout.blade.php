@@ -58,6 +58,9 @@
           <ul class="nav navbar-nav">
             <li class="active"><a href="{{ url('/nosaltres') }}">Nosaltres</a></li>
           </ul>
+          <ul class="nav navbar-nav">
+            <li><a href="{{ url('/nivells') }}">Nivells</a></li>
+          </ul>
         </div><!--/.nav-collapse -->
       </div>
     </nav>
