@@ -54,12 +54,14 @@
           </button>
           <a class="navbar-brand" href="{{ url('/') }}">Learneverywhere</a>
         </div>
+
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="{{ url('/nosaltres') }}">Nosaltres</a></li>
-          </ul>
-          <ul class="nav navbar-nav">
-            <li><a href="{{ url('/nivells') }}">Nivells</a></li>
+            <li class="{{ Request::segment(1) === 'nosaltres' ? 'active' : null }}">
+            <a href="{{ url('/nosaltres') }}">Nosaltres</a>
+
+            <li class="{{ Request::segment(1) === 'nivells' ? 'active' : null }}">
+            <a href="{{ url('/nivells') }}">Nivells</a>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -85,7 +87,7 @@
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
 
-    <script src="js/libs.js"></script> 
+    <script src="js/libs.js"></script>
     @yield('scripts')
   </body>
 </html>

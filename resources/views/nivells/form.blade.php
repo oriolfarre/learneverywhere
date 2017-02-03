@@ -7,17 +7,18 @@
 
 {!! Form::open([]) !!}
 
-  <p> Pregunta 1:</p>{!! Form::text('name', @$name) !!}<br/><br/>
+  <div class="form-group {{ $errors->has('pregunta1') ? ' has-error' : '' }}">
+    <label for="name" class="control-label">Pregunta 1:</label>
+      {!! Form::text('pregunta1', null, ['class' => 'form-control', 'id' => 'pregunta1']) !!}
 
-  <p> Pregunta 2:</p>{!! Form::text('name', @$name) !!}<br/><br/>
+  </div>
 
-  <p> Pregunta 3:</p>{!! Form::text('name', @$name) !!}<br/><br/>
 
-  <p> Pregunta 4:</p>{!! Form::text('name', @$name) !!}<br/><br/>
-
-  <p> Pregunta 5:</p>{!! Form::text('name', @$name) !!}<br/><br/><br/>
-
-  {!! Form::submit('Comprova') !!}
+  <div class="pull-left">
+    <button type="submit" class="btn btn-success">
+        <i class="fa fa-btn fa-floppy-o"></i>Comprova
+    </button>
+  </div>
 
 {!! Form::close() !!}
 
