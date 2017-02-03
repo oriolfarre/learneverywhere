@@ -6,18 +6,15 @@
 
 
   <div class="owl-carousel owl-theme">
-      <div class="item"><h4>1</h4></div>
-      <div class="item"><h4>2</h4></div>
-      <div class="item"><h4>3</h4></div>
-      <div class="item"><h4>4</h4></div>
-      <div class="item"><h4>5</h4></div>
-      <div class="item"><h4>6</h4></div>
-      <div class="item"><h4>7</h4></div>
-      <div class="item"><h4>8</h4></div>
-      <div class="item"><h4>9</h4></div>
-      <div class="item"><h4>10</h4></div>
-      <div class="item"><h4>11</h4></div>
-      <div class="item"><h4>12</h4></div>
+      <div class="item"><h2>Level 1</h2></div>
+      <div class="item"><h2>Level 2</h2></div>
+      <div class="item"><h2>Level 3</h2></div>
+      <div class="item"><h2>Level 4</h2></div>
+      <div class="item"><h2>Level 5</h2></div>
+      <div class="item"><h2>Level 6</h2></div>
+      <div class="item"><h2>Level 7</h2></div>
+      <div class="item"><h2>Level 8</h2></div>
+
   </div>
 
 @endsection
@@ -26,7 +23,7 @@
   <script type="application/javascript">
 
     $(document).ready(function(){
-    
+
       $('.owl-carousel').owlCarousel({
         loop:true,
         margin:10,
