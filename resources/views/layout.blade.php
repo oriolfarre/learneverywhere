@@ -13,9 +13,6 @@
 
     <link href="css/styles.css" rel="stylesheet">
 
-
-
-
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
@@ -41,7 +38,7 @@
 
   </head>
 
-  <body>
+  <body class="{{ Request::segment(1) === 'home' ? 'home-content' : null }}">
 
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
@@ -52,7 +49,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="{{ url('/') }}">Learneverywhere</a>
+          <a class="navbar-brand" href="{{ url('/home') }}">Learneverywhere</a>
         </div>
 
         <div id="navbar" class="collapse navbar-collapse">
