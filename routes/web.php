@@ -12,5 +12,17 @@
 */
 
 Route::get('/', function () {
+    return redirect('/home');
+});
+
+Route::get('/home', function () {
     return view('home');
+});
+
+Route::get('/nosaltres', function () {
+    return view('menu/nosaltres');
+});
+
+Route::get('/nivells', function () {
+    return view('nivells/form');
 });

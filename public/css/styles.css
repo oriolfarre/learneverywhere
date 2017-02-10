@@ -1,0 +1,31 @@
+body > .container{
+    margin-top: 75px;
+}
+
+/* ----- HOME ------ */
+
+.owl-carousel .item{
+  background-color: #ff3f4d;
+  height: 200px;
+}
+
+.owl-carousel h2 {
+    color: #FFF;
+    text-align: center;
+    padding: 5rem 0;
+    margin: 0;
+    font-style: italic;
+    font-weight: 300;
+}
+
+.home-content{
+  background-image: url("/img/homeWP.jpg");
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  /*filter: blur(5px);
+  -webkit-filter: blur(5px);*/
+
+}
