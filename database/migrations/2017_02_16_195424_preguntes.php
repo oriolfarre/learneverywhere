@@ -17,7 +17,8 @@ class Preguntes extends Migration
           $table->increments('id_pregunta');
           $table->string('pregunta');
           $table->string('descripcio');
-          $table->string('tema');
+          $table->string('imatge');
+          $table->integer('estat');
           $table->timestamps();
       });
     }
@@ -29,6 +30,6 @@ class Preguntes extends Migration
      */
     public function down()
     {
-        Schema::drop('preguntes');
+      Schema::drop('preguntes');
     }
 }
