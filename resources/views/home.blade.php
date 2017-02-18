@@ -1,30 +1,43 @@
-@extends('layout')
+@extends('layouts.app')
 
 @section('content')
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
 
-  <h1>Prova de learneverywhere</h1>
+            <div class="panel panel-default">
+                <div class="panel-heading">Dashboard</div>
 
-
-  <div class="owl-carousel owl-theme">
-      <div class="item"><h2>Level 1</h2></div>
-      <div class="item"><h2>Level 2</h2></div>
-      <div class="item"><h2>Level 3</h2></div>
-      <div class="item"><h2>Level 4</h2></div>
-      <div class="item"><h2>Level 5</h2></div>
-      <div class="item"><h2>Level 6</h2></div>
-      <div class="item"><h2>Level 7</h2></div>
-      <div class="item"><h2>Level 8</h2></div>
-
-  </div>
+                <div class="panel-body">
+                    You are logged in!
+                </div>
+            </div>
 
 
+        </div>
+        <div class="col-md-12">
+          <div class="owl-carousel owl-theme">
+              <div class="item"><h2>Level 1</h2></div>
+              <div class="item"><h2>Level 2</h2></div>
+              <div class="item"><h2>Level 3</h2></div>
+              <div class="item"><h2>Level 4</h2></div>
+              <div class="item"><h2>Level 5</h2></div>
+              <div class="item"><h2>Level 6</h2></div>
+              <div class="item"><h2>Level 7</h2></div>
+              <div class="item"><h2>Level 8</h2></div>
+
+          </div>
+        </div>
+    </div>
+</div>
 @endsection
+
 
 @section('scripts')
   <script type="application/javascript">
 
     $(document).ready(function(){
-
+      
       $('.owl-carousel').owlCarousel({
         loop:true,
         margin:10,
