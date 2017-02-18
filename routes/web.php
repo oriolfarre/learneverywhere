@@ -29,5 +29,7 @@ Route::get('/nivells', function () {
 
 // Auth routes
 Auth::routes();
+Route::get('profile', 'UserController@profile');
+Route::post('profile', 'UserController@updateAvatar');
 
 //Route::get('/home', 'HomeController@index');
