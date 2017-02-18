@@ -3,18 +3,6 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-
-            <div class="panel panel-default">
-                <div class="panel-heading">Dashboard</div>
-
-                <div class="panel-body">
-                    You are logged in!
-                </div>
-            </div>
-
-
-        </div>
         <div class="col-md-12">
           <div class="owl-carousel owl-theme">
               <div class="item"><h2>Level 1</h2></div>
@@ -37,7 +25,7 @@
   <script type="application/javascript">
 
     $(document).ready(function(){
-      
+
       $('.owl-carousel').owlCarousel({
         loop:true,
         margin:10,

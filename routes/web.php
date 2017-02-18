@@ -30,4 +30,4 @@ Route::get('/nivells', function () {
 // Auth routes
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
+//Route::get('/home', 'HomeController@index');
