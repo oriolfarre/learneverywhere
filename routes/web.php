@@ -26,3 +26,9 @@ Route::get('/nosaltres', function () {
 Route::get('/nivells', function () {
     return view('nivells/form');
 });
+
+Route::get('/preguntes', function () {
+    return view('puja_preguntes/form_preguntes');
+});
+
+Route::get('form_preguntes/{$count}', 'Preguntes@novaPregunta');
