@@ -94,6 +94,10 @@
         </nav>
 
         @yield('content')
+
+        <!-- Footer section -->
+        @include('layouts.footer')
+        <!-- End footer section -->
     </div>
 
     <!-- Scripts -->

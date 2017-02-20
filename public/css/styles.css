@@ -5,7 +5,7 @@ body > .container{
 /* ----- HOME ------ */
 
 .owl-carousel .item{
-  background-color: #ff3f4d;
+  background-color: #e46d48;
   height: 200px;
 }
 
@@ -28,4 +28,39 @@ body > .container{
   /*filter: blur(5px);
   -webkit-filter: blur(5px);*/
 
+}
+.bg-footer .navbar-default{
+  background-color: #323232;
+}
+
+.bg-footer .navbar-text{
+  color: #fff !important;
+  vertical-align: middle;
+}
+
+footer{
+  bottom: 0px;
+  width: 100%;
+  height: 80px;
+  position: absolute;
+  right: 0px;
+  left: 0px;
+  color: #fff;
+  padding: 15px;
+}
+
+/* PROFILE PAGE */
+.profile-image img{
+  margin: 0 auto;
+  width:200px;
+  height:200px;
+  border-radius:50%;
+}
+
+.profile-score{
+  margin-top: 60px;
+}
+
+.jumbotron{
+  margin-top: -30px;
 }
