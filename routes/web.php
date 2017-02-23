@@ -26,3 +26,10 @@ Route::get('/nosaltres', function () {
 Route::get('/nivells', function () {
     return view('nivells/form');
 });
+
+// Auth routes
+Auth::routes();
+Route::get('profile', 'UserController@profile');
+Route::post('profile', 'UserController@updateAvatar');
+
+//Route::get('/home', 'HomeController@index');
