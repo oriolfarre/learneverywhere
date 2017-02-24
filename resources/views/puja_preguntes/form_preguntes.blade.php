@@ -8,7 +8,7 @@
 <p>Per afegir correctament la pregunta hauras d'introduir una resposta correcte, i com a mínim, una d'incorrecte. D'incorrectes hi han un màxim de 3 respostes.</p>
 <br/><br/>
 
-{!! Form::open(array('')) !!}
+{!! Form::open() !!}
 
 <!-- Afegim un desplegable on selecciona el nivell al que fa referència la pregunta -->
 <div class="form-group {{ $errors->has('nivell') ? ' has-error' : '' }}">
