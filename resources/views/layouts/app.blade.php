@@ -48,7 +48,7 @@
                     <ul class="nav navbar-nav">
                       <li class="{{ Request::segment(1) === 'nosaltres' ? 'active' : null }}">
                       <a href="{{ url('/nosaltres') }}">Nosaltres</a>
-                      <li class="{{ Request::segment(1) === 'puja_preguntes' ? 'active' : null }}">
+                      <li class="{{ Request::segment(1) === 'preguntes' ? 'active' : null }}">
                       <a href="{{ url('/preguntes') }}">Afegir preguntes</a>
                     </ul>
 
