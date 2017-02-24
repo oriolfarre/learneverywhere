@@ -10,6 +10,10 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+// Auth routes
+Auth::routes();
+Route::get('profile', 'UserController@profile');
+Route::post('profile', 'UserController@updateAvatar');
 
 Route::get('/', function () {
     return redirect('/home');
@@ -27,9 +31,12 @@ Route::get('/nivells', function () {
     return view('nivells/form');
 });
 
-// Auth routes
-Auth::routes();
-Route::get('profile', 'UserController@profile');
-Route::post('profile', 'UserController@updateAvatar');
+
+Route::get('/preguntes', function () {
+    return view('puja_preguntes/form_preguntes');
+});
+
+Route::post('/preguntes', 'PreguntesController@novaPregunta');
+
 
 //Route::get('/home', 'HomeController@index');
