@@ -4,9 +4,18 @@
 @section('content')
 
 <h1>Afegir preguntes</h1>
+<br/>
+<p>Per afegir correctament la pregunta hauras d'introduir una resposta correcte, i com a mínim, una d'incorrecte. D'incorrectes hi han un màxim de 3 respostes.</p>
 <br/><br/>
 
-{!! Form::open([]) !!}
+{!! Form::open(array('')) !!}
+
+<!-- Afegim un desplegable on selecciona el nivell al que fa referència la pregunta -->
+<div class="form-group {{ $errors->has('nivell') ? ' has-error' : '' }}">
+  <label for="name" class="control-label">Nivell:</label>
+    {{ Form::select('nivell', array('1' => '1', '2' => '2', '3' => '3')) }}
+</div>
+
   <!-- Afegim el camp pregunta que es on s'escriurà l'enunciat de la pregunta -->
   <div class="form-group {{ $errors->has('pregunta') ? ' has-error' : '' }}">
     <label for="name" class="control-label">Pregunta:</label>
@@ -27,9 +36,22 @@
 
   <!-- Afegim el camp resposta que es on introduirem les possibles repostes per a la pregunta que estem creant -->
   <div class="form-group {{ $errors->has('resposta') ? ' has-error' : '' }}">
-    <label for="name" class="control-label">Resposta <?php echo $count; ?>:</label>
-    {!! Form::text('resposta', null, ['class' => 'form-control', 'id' => 'resposta']) !!}
+    <label for="name" class="control-label">Resposta Correcte:</label>
+    {!! Form::text('resposta_correcte', null, ['class' => 'form-control', 'id' => 'resposta']) !!}
   </div>
+  <div class="form-group {{ $errors->has('resposta') ? ' has-error' : '' }}">
+    <label for="name" class="control-label">Resposta Incorrecte 1:</label>
+    {!! Form::text('resposta_incorrecte1', null, ['class' => 'form-control', 'id' => 'resposta']) !!}
+  </div>
+  <div class="form-group {{ $errors->has('resposta') ? ' has-error' : '' }}">
+    <label for="name" class="control-label">Resposta Incorrecte 2:</label>
+    {!! Form::text('resposta_incorrecte2', null, ['class' => 'form-control', 'id' => 'resposta']) !!}
+  </div>
+  <div class="form-group {{ $errors->has('resposta') ? ' has-error' : '' }}">
+    <label for="name" class="control-label">Resposta Incorrecte 3:</label>
+    {!! Form::text('resposta_incorrecte3', null, ['class' => 'form-control', 'id' => 'resposta']) !!}
+  </div>
+
   <div class="pull-right">
     {!! Form::button('+', array('class' => 'btn btn-success', 'id' => 'nou')) !!}
   </div>
@@ -51,7 +73,6 @@
 
     $(document).ready(function(){
       $('#nou').click(function(){
-        <?php $count=$count+1; ?>
                 alert("prova");
             });
 
