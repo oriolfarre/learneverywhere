@@ -1,5 +1,5 @@
 <?php $count=1; ?>
-@extends('layout')
+@extends('layouts.app')
 
 @section('content')
 
