@@ -11,7 +11,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
     <!-- Fonts -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css" integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Droid+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
@@ -48,9 +48,9 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
                       <li class="{{ Request::segment(1) === 'nosaltres' ? 'active' : null }}">
-                      <a href="{{ url('/nosaltres') }}">Nosaltres</a>
+                      <a href="{{ url('/nosaltres') }}"><i class="fa fa-info-circle icons" aria-hidden="true"></i>Qui sóm?</a>
                       <li class="{{ Request::segment(1) === 'preguntes' ? 'active' : null }}">
-                      <a href="{{ url('/preguntes') }}">Afegir preguntes</a>
+                      <a href="{{ url('/preguntes') }}"><i class="fa fa-upload icons" aria-hidden="true"></i>Afegir preguntes</a>
                     </ul>
 
                     <!-- Right Side Of Navbar -->

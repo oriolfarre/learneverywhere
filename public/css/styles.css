@@ -1,5 +1,7 @@
 body{
-  font-family: 'Droid Sans', sans-serif;
+  /*font-family: 'Montserrat', sans-serif;*/
+  font-size: 18px !important;
+  /*color: #fff !important;*/
   background-color: #203748;
 }
 
@@ -11,6 +13,10 @@ h1{
   color: #39D084;
 }
 
+.icons{
+  margin-right: 10px;
+}
+
 .navbar-default{
   background-color: #f04949;
   border-color: #f04949;
@@ -20,6 +26,7 @@ h1{
 .navbar-default .navbar-brand {
     color: #fff;
     margin: 15px 25px;
+    border-radius: 25px;
     text-transform: uppercase;
 }
 
@@ -46,6 +53,12 @@ h1{
 
 }
 
+.navbar-default .navbar-nav>.active>a:hover{
+  background-color: #203748;
+  color: #fff;
+
+}
+
 .navbar {
     min-height: 50px;
     vertical-align: middle;
@@ -55,15 +68,27 @@ h1{
     margin: 15px 15px;
 }
 
+.navbar-default .navbar-brand:focus, .navbar-default .navbar-brand:hover {
+  background-color: #203748;
+  color: #fff;
+  text-decoration: none;
+  -webkit-transition: all 0.3s linear;
+  -moz-transition: all 0.3s linear;
+  -o-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+  border-radius: 25px;
+}
+
 /* ----- HOME ------ */
 
-.home-header>.container-fluid{
+/* Header image*/
+/*.home-header>.container-fluid{
   margin-top: -25px;
   width: 100%;
   height: 350px;
-  background-image: url('http://www.ilikewallpaper.net/iphone-panoramic-wallpapers/download/15689/Miami-Skyline-iphone-panoramic-wallpaper-ilikewallpaper_com.jpg');
+  background-image: url('');
   background-size:cover;
-}
+}*/
 
 /* carousel */
 
@@ -88,7 +113,7 @@ h1{
 /* End carousel */
 
 .bg-footer .navbar-default{
-  background-color: #323232;
+  background-color: #355267;
 }
 
 .bg-footer .navbar-text{
@@ -121,4 +146,9 @@ footer{
 
 .jumbotron{
   margin-top: -30px;
+}
+
+/* PUJAR PREGUNTES */
+.form_preguntes{
+  color: #fff;
 }

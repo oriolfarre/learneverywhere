@@ -7,7 +7,7 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-12 form_preguntes">
             <h1>Afegir preguntes</h1>
             <br/>
             <p>Per afegir correctament la pregunta hauràs d'introduir una resposta correcta, i com a mínim, una d'incorrecta. D'incorrectes hi han un màxim de 3 respostes.</p>
@@ -61,7 +61,7 @@
                 {!! Form::button('+', array('class' => 'btn btn-success', 'id' => 'nou')) !!}
               </div>
 
-            
+
               <div class="pull-left">
                 <button type="submit" class="btn btn-success">
                     <i class="fa fa-btn fa-floppy-o"></i>Afegir
