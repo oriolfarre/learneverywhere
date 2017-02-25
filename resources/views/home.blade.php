@@ -9,7 +9,7 @@
     <div class="row">
         <div class="col-md-12">
           <div class="owl-carousel owl-theme">
-              <div class="item"><h2>Level 1</h2></div>
+              <div class="item hovereffect"><h2>Level 1</h2></div>
               <div class="item"><h2>Level 2</h2></div>
               <div class="item"><h2>Level 3</h2></div>
               <div class="item"><h2>Level 4</h2></div>
