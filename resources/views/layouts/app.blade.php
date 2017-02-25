@@ -58,7 +58,7 @@
                         <!-- Authentication Links -->
                         @if (Auth::guest())
                             <li><a href="{{ url('/login') }}">Login</a></li>
-                            <li><a href="{{ url('/register') }}">Register</a></li>
+                            <li><a href="{{ url('/register') }}">Registrar</a></li>
                         @else
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="position:relative; padding-left:50px;">
@@ -70,7 +70,7 @@
                                     <!-- Profile Page -->
                                     <li>
                                         <a href="{{ url('/profile') }}"><i class="fa fa-btn fa-user"></i>
-                                            Profile
+                                            Perfil
                                         </a>
                                     </li>
 
@@ -78,7 +78,7 @@
                                         <a href="{{ url('/logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();"><i class="fa fa-sign-out" aria-hidden="true"></i>
-                                            Logout
+                                            Sortir
                                         </a>
 
                                         <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">

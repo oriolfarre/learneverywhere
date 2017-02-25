@@ -21,7 +21,7 @@
                     {!! Form::close() !!}
 
                     <div class="profile-score">
-                      <h3>Puntuació Total: {{ $user->punts }}</h3>
+                      <h3><i class="fa fa-trophy icons" aria-hidden="true"></i>Puntuació Total: {{ $user->punts }}</h3>
                     </div>
                 </div>
             </div>
