@@ -21,7 +21,7 @@ h1{
   background-color: #f04949;
   border-color: #f04949;
   font-size: 18px;
-  box-shadow: 0 2px 20px -2px black;
+  /*box-shadow: 0 2px 20px -2px black;*/
 }
 
 .navbar-default .navbar-brand {
