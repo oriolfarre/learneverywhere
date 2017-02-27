@@ -41,5 +41,12 @@ Route::get('/preguntes', function () {
 
 Route::post('/preguntes', 'PreguntesController@novaPregunta');
 
+//alex:
 
+Route::get('/activitats', 'PreguntesController@list');
+
+Route::get('activitats/{id_pregunta}', 'PreguntesController@show_pregunta');
+
+
+Route::get('resolution', 'PreguntesController@comprove');
 //Route::get('/home', 'HomeController@index');

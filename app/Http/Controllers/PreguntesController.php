@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Preguntes;
+use App\Respostes;
 
 class PreguntesController extends Controller
 {
@@ -60,5 +62,29 @@ class PreguntesController extends Controller
        }
 
       //  echo $pregunta, $descripcio, $imatge, $nivell, $respostaCorrecte, $respostaIncorrecte1;
+    }
+
+    public function list(){
+
+      $preguntes = Preguntes::all();
+      return view('activitats/activitats', compact('preguntes'));
+
+    }
+
+    public function show_pregunta($id){
+
+      $pregunta = Preguntes::all()->where('id_pregunta', $id);
+      $respostes =Respostes::all()->where('id_pregunta', $id);
+      return view('activitats/pregunta', compact('pregunta','respostes'));
+
+    }
+
+    public function comprove(){
+      $id_resposta = Request()->all();
+      $compare = Respostes::all()->where('id_resposta',$id_resposta["resposta"]);
+
+      $id_pregunta = $compare[0]['id_pregunta'];
+  
+      return view('activitats/resolution',compact('compare'));
     }
 }
