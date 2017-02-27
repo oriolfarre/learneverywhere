@@ -59,6 +59,9 @@
 
             <li class="{{ Request::segment(1) === 'nivells' ? 'active' : null }}">
             <a href="{{ url('/nivells') }}">Nivells</a>
+
+            <li class="{{ Request::segment(1) === 'puja_preguntes' ? 'active' : null }}">
+            <a href="{{ url('/preguntes') }}">Afegir preguntes</a>
           </ul>
         </div><!--/.nav-collapse -->
       </div>

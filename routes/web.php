@@ -10,6 +10,10 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+// Auth routes
+Auth::routes();
+Route::get('profile', 'UserController@profile');
+Route::post('profile', 'UserController@updateAvatar');
 
 use App\Preguntes;
 use App\Respostes;
@@ -30,35 +34,12 @@ Route::get('/nivells', function () {
     return view('nivells/form');
 });
 
-Route::get('/activitats', function () {
 
-	$preguntes = Preguntes::all();
-	
-    return view('activitats/activitats', compact('preguntes'));
+Route::get('/preguntes', function () {
+    return view('puja_preguntes/form_preguntes');
 });
 
-Route::get('activitats/{id_pregunta}', function($id){
-
-	$pregunta = Preguntes::all()->where('id_pregunta', $id);
-	$respostes =Respostes::all()->where('id_pregunta', $id);
+Route::post('/preguntes', 'PreguntesController@novaPregunta');
 
 
-	
-	return view('activitats/pregunta', compact('pregunta','respostes'));
-
-	});
-
-Route::get('resolution', function(){
-	$id_resposta = Request()->all();
-	$compare = Respostes::all()->where('id_resposta',$id_resposta["resposta"]);
-
-	echo $compare;
-	$id_pregunta = $compare['id_pregunta'];
-	echo $id_pregunta;
-
-
-	return view('activitats/resolution',compact('compare'));
-	
-
-	
-});
+//Route::get('/home', 'HomeController@index');
