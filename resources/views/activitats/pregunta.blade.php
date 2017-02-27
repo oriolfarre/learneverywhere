@@ -1,4 +1,4 @@
-
+@extends('layouts.app')
 
 <h1>Activitat</h1>
 <div>
@@ -7,7 +7,7 @@
 	    @foreach ($compare as $comp)
 		    @if ($comp->correcte == 'si')
 		        <p style="color: green;">Correcto</p>
-		    
+
 		    @elseif($comp->correcte == 'no')
 		    <p style="color: red;">Incorrecto</p>
 		    @endif
@@ -16,7 +16,7 @@
 	@endif
 
 	@foreach($pregunta as $preg)
-		
+
 			<p>{{ $preg -> pregunta}}</p>
 			{{ $preg -> descripcio}}
 			<img src="/img/{{$preg -> imatge}}" width="100">
@@ -29,5 +29,5 @@
 @endforeach
 	<input type="submit" name="">
 	</form>
-	
+
 </div>
