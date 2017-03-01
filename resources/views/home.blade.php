@@ -9,6 +9,9 @@
     <div class="row">
         <div class="col-md-12">
           <h1>Aprèn anglès de la forma més divertida!</h1>
+          <a class="btn btn-primary" href="{{ url('activitats') }}">
+              Jugar!
+          </a>
           <div class="owl-carousel owl-theme">
               <div class="item hovereffect"><h2>Level 1</h2></div>
               <div class="item"><h2>Level 2</h2></div>

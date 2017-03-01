@@ -43,7 +43,7 @@ Route::post('/preguntes', 'PreguntesController@novaPregunta');
 
 //alex:
 
-Route::get('/activitats', 'PreguntesController@list');
+Route::get('activitats', 'PreguntesController@list');
 
 Route::get('activitats/{id_pregunta}', 'PreguntesController@show_pregunta');
 

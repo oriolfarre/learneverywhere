@@ -67,10 +67,12 @@ class PreguntesController extends Controller
     public function list(){
 
       $preguntes = Preguntes::all();
+      // No retornar vista
       return view('activitats/activitats', compact('preguntes'));
 
     }
 
+    //Obtenir id de pregunta automaticament i anar pasant
     public function show_pregunta($id){
 
       $pregunta = Preguntes::all()->where('id_pregunta', $id);
@@ -84,7 +86,8 @@ class PreguntesController extends Controller
       $compare = Respostes::all()->where('id_resposta',$id_resposta["resposta"]);
 
       $id_pregunta = $compare[0]['id_pregunta'];
-  
+
+      //No retornar vista i fer la comprovació directament al controller, després pasar la puntuació per la barra d'energia
       return view('activitats/resolution',compact('compare'));
     }
 }

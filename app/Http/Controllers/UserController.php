@@ -18,7 +18,7 @@ class UserController extends Controller
       //Mètode que s'encarrega d'actualitzar l'imatge de perfil
 
       if($request->hasFile('avatar')){
-        dd($request->avatar);
+        // dd($request->avatar);
         $avatar = $request->file('avatar');
         $filename = time() . '.' . $avatar->getClientOriginalExtension();
         Image::make($avatar)->resize(300,300)->save(public_path('uploads/avatars/' . $filename));

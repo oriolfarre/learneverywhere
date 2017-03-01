@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('content')
+
 <h1>Activitat</h1>
 <div>
 
@@ -31,3 +33,4 @@
 	</form>
 
 </div>
+@endsection
