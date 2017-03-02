@@ -2,6 +2,7 @@
 
 @section('content')
 
+
 <h1>Activitat</h1>
 <div>
 
@@ -21,7 +22,7 @@
 
 			<p>{{ $preg -> pregunta}}</p>
 			{{ $preg -> descripcio}}
-			<img src="/img/{{$preg -> imatge}}" width="100">
+			<img src="/uploads/imatges/{{$preg -> imatge}}" width="100">
 	@endforeach
 
 	<form action="{{ url('resolution') }}">
