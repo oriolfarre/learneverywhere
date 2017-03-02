@@ -168,5 +168,8 @@ footer{
 
 /* PUJAR PREGUNTES */
 .form_preguntes{
-  color: #fff;
+  color: black;
+}
+.petit{
+  font-size: 13px;
 }

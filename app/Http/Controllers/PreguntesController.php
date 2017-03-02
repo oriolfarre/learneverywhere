@@ -6,30 +6,40 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Preguntes;
 use App\Respostes;
+use Laracasts\Flash\FlashServiceProvider;
+use Image;
 
 class PreguntesController extends Controller
 {
-    function novaPregunta(Request $request) {
-       $nivell = $request->input('nivell');
+    public function novaPregunta(Request $request) {
+      //  $nivell = $request->input('nivell');
        $pregunta = $request->input('pregunta');
        $descripcio = $request->input('descripcio');
-       $imatge = $request->input('imatge');
-       $nivell = $request->input('nivell');
+       $imatge = $request->file('imatge');
        $respostaCorrecte = $request->input('resposta_correcte');
        $respostaIncorrecte1 = $request->input('resposta_incorrecte1');
        $respostaIncorrecte2 = $request->input('resposta_incorrecte2');
        $respostaIncorrecte3 = $request->input('resposta_incorrecte3');
 
-       if ($nivell=="" || $pregunta=="" || $descripcio=="" || $imatge=="" || $respostaCorrecte=="" || $respostaIncorrecte1==""){
+      //  dd($request->pregunta, $request->descripcio, $request->resposta_correcte, $request->resposta_incorrecte1, $request->imatge);
+      //  dd($pregunta, $descripcio, $respostaCorrecte, $respostaIncorrecte1, $imatge);
+      //  if ($nivell=="" || $pregunta=="" || $descripcio=="" || $imatge=="" || $respostaCorrecte=="" || $respostaIncorrecte1==""){
+      if ($pregunta=="" || $descripcio=="" || $imatge=="" || $respostaCorrecte=="" || $respostaIncorrecte1==""){
+
+         flash("No s'ha afegit la pregunta, comprova que els camps obligatoris són correctes.", 'danger');
 
          return redirect('/preguntes');
        }
        else {
 
+         if($request->hasFile('imatge')){
+           $filename = time() . '.' . $imatge->getClientOriginalExtension();
+           Image::make($imatge)->resize(300,300)->save(public_path('uploads/imatges/' . $filename));
+
          //Afegim les dades de la pregunta a la taula Preguntes.
          $id = DB::table('preguntes')->insertGetId
          (
-            ['pregunta' => $pregunta, 'descripcio' => $descripcio, 'imatge' => $imatge, 'estat' => 0]
+            ['pregunta' => $pregunta, 'descripcio' => $descripcio, 'imatge' => $filename, 'estat' => 0]
          );
 
          //Ara afegim les dades de les repostes a la taula Respostes. Aprofitem la variable $id que agafa l'id de la pregunta per fer la relació a la pregunta.
@@ -58,10 +68,14 @@ class PreguntesController extends Controller
            );
          }
 
-         return redirect('/home');
+
+
+          flash("Pregunta afegida correctament. La seva pregunta està pendent de revisió, si és correcte, s'aprovarà en les següents hores.", 'success');
+           return redirect('/preguntes');
+         }
+
        }
 
-      //  echo $pregunta, $descripcio, $imatge, $nivell, $respostaCorrecte, $respostaIncorrecte1;
     }
 
     public function list(){
@@ -85,9 +99,14 @@ class PreguntesController extends Controller
       $id_resposta = Request()->all();
       $compare = Respostes::all()->where('id_resposta',$id_resposta["resposta"]);
 
+// <<<<<<< Updated upstream
       $id_pregunta = $compare[0]['id_pregunta'];
 
       //No retornar vista i fer la comprovació directament al controller, després pasar la puntuació per la barra d'energia
+// =======
+
+
+// >>>>>>> Stashed changes
       return view('activitats/resolution',compact('compare'));
     }
 }
