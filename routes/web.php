@@ -41,7 +41,9 @@ Route::get('/preguntes', function () {
 
 Route::post('/preguntes', 'PreguntesController@novaPregunta');
 
-//alex:
+//PREGUNTES:
+
+Route::get('nivell/{nivell}', 'PreguntesController@getPreguntes');
 
 Route::get('activitats', 'PreguntesController@list');
 

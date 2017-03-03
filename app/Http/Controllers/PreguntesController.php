@@ -12,7 +12,7 @@ use Image;
 class PreguntesController extends Controller
 {
     public function novaPregunta(Request $request) {
-      //  $nivell = $request->input('nivell');
+       $nivell = $request->input('nivell');
        $pregunta = $request->input('pregunta');
        $descripcio = $request->input('descripcio');
        $imatge = $request->file('imatge');
@@ -23,8 +23,8 @@ class PreguntesController extends Controller
 
       //  dd($request->pregunta, $request->descripcio, $request->resposta_correcte, $request->resposta_incorrecte1, $request->imatge);
       //  dd($pregunta, $descripcio, $respostaCorrecte, $respostaIncorrecte1, $imatge);
-      //  if ($nivell=="" || $pregunta=="" || $descripcio=="" || $imatge=="" || $respostaCorrecte=="" || $respostaIncorrecte1==""){
-      if ($pregunta=="" || $descripcio=="" || $imatge=="" || $respostaCorrecte=="" || $respostaIncorrecte1==""){
+       if ($nivell=="" || $pregunta=="" || $descripcio=="" || $imatge=="" || $respostaCorrecte=="" || $respostaIncorrecte1==""){
+      // if ($pregunta=="" || $descripcio=="" || $imatge=="" || $respostaCorrecte=="" || $respostaIncorrecte1==""){
 
          flash("No s'ha afegit la pregunta, comprova que els camps obligatoris són correctes.", 'danger');
 
@@ -39,8 +39,9 @@ class PreguntesController extends Controller
          //Afegim les dades de la pregunta a la taula Preguntes.
          $id = DB::table('preguntes')->insertGetId
          (
-            ['pregunta' => $pregunta, 'descripcio' => $descripcio, 'imatge' => $filename, 'estat' => 0]
+            ['pregunta' => $pregunta, 'descripcio' => $descripcio, 'imatge' => $filename, 'estat' => 0, 'nivell' => $nivell]
          );
+
 
          //Ara afegim les dades de les repostes a la taula Respostes. Aprofitem la variable $id que agafa l'id de la pregunta per fer la relació a la pregunta.
          DB::table('respostes')->insert
@@ -99,14 +100,35 @@ class PreguntesController extends Controller
       $id_resposta = Request()->all();
       $compare = Respostes::all()->where('id_resposta',$id_resposta["resposta"]);
 
-// <<<<<<< Updated upstream
       $id_pregunta = $compare[0]['id_pregunta'];
 
       //No retornar vista i fer la comprovació directament al controller, després pasar la puntuació per la barra d'energia
-// =======
 
 
-// >>>>>>> Stashed changes
+
       return view('activitats/resolution',compact('compare'));
     }
+
+    /*
+      Obtenim les preguntes segons el nivell seleccionat utilitzant scopes
+    */
+
+    public function getPreguntes($nivell){
+      if($nivell === '1'){
+        $preguntes = Preguntes::GetPreguntesNivell1()->get();
+        dd($preguntes);
+      }
+      elseif($nivell === '2'){
+        $preguntes = Preguntes::GetPreguntesNivell2()->get();
+        dd($preguntes);
+      }
+      elseif($nivell === '3'){
+        $preguntes = Preguntes::GetPreguntesNivell3()->get();
+        dd($preguntes);
+      }
+
+
+    }
+
+
 }

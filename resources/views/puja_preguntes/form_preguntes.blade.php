@@ -22,10 +22,10 @@
                     {!! Form::open(array('url' => '/preguntes', 'files'=>true, 'method' => 'POST')) !!}
 
                     <!-- Afegim un desplegable on selecciona el nivell al que fa referència la pregunta -->
-                    <!-- <div class="form-group {{ $errors->has('nivell') ? ' has-error' : '' }}">
+                    <div class="form-group {{ $errors->has('nivell') ? ' has-error' : '' }}">
                       <label for="name" class="control-label">Nivell *:</label>
                         {{ Form::select('nivell', array('1' => '1', '2' => '2', '3' => '3')) }}
-                    </div> -->
+                    </div>
 
                       <!-- Afegim el camp pregunta que es on s'escriurà l'enunciat de la pregunta -->
                       <div class="form-group {{ $errors->has('pregunta') ? ' has-error' : '' }}">
