@@ -163,7 +163,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         'Collective\Html\HtmlServiceProvider',
-	Laracasts\Flash\FlashServiceProvider::class,
+	      Laracasts\Flash\FlashServiceProvider::class,
         /*
          * Package Service Providers...
          */
@@ -179,6 +179,8 @@ return [
         App\Providers\RouteServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
         'Barryvdh\Debugbar\ServiceProvider',
+        Anhskohbo\NoCaptcha\NoCaptchaServiceProvider::class,
+
 
     ],
 
@@ -232,6 +234,7 @@ return [
         'Html' => 'Collective\Html\HtmlFacade',
         'Image' => Intervention\Image\Facades\Image::class,
         'Debugbar' => 'Barryvdh\Debugbar\Facade',
+        'NoCaptcha' => 'Anhskohbo\NoCaptcha\Facades\NoCaptcha',
     ],
 
 ];

@@ -62,6 +62,10 @@
                         <label for="name" class="control-label">Resposta Incorrecte 3:</label>
                         {!! Form::text('resposta_incorrecte3', null, ['class' => 'form-control', 'id' => 'resposta3']) !!}
                       </div>
+                      <div class="captcha">
+                        <label for="name" class="control-label">Verifica:</label>
+                        {!! app('captcha')->display(); !!}
+                      </div>
 
                       <div class="pull-right">
                         <!-- <button type="button" class="btn btn-success" id="nou"> -->

@@ -7,12 +7,14 @@ use Illuminate\Support\Facades\DB;
 use App\Preguntes;
 use App\Respostes;
 use Laracasts\Flash\FlashServiceProvider;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Input;
 use Image;
 
 class PreguntesController extends Controller
 {
     public function novaPregunta(Request $request) {
-       $nivell = $request->input('nivell');
+      //  $nivell = $request->input('nivell');
        $pregunta = $request->input('pregunta');
        $descripcio = $request->input('descripcio');
        $imatge = $request->file('imatge');
@@ -20,62 +22,70 @@ class PreguntesController extends Controller
        $respostaIncorrecte1 = $request->input('resposta_incorrecte1');
        $respostaIncorrecte2 = $request->input('resposta_incorrecte2');
        $respostaIncorrecte3 = $request->input('resposta_incorrecte3');
-
-      //  dd($request->pregunta, $request->descripcio, $request->resposta_correcte, $request->resposta_incorrecte1, $request->imatge);
-      //  dd($pregunta, $descripcio, $respostaCorrecte, $respostaIncorrecte1, $imatge);
-       if ($nivell=="" || $pregunta=="" || $descripcio=="" || $imatge=="" || $respostaCorrecte=="" || $respostaIncorrecte1==""){
-      // if ($pregunta=="" || $descripcio=="" || $imatge=="" || $respostaCorrecte=="" || $respostaIncorrecte1==""){
-
-         flash("No s'ha afegit la pregunta, comprova que els camps obligatoris són correctes.", 'danger');
-
+       // --- INICI CONTROL CAPTCHA
+       $data = Input::all();
+  	   $rules = array(
+  			'g-recaptcha-response' => 'required|captcha',
+  		  );
+       $validator = Validator::make($data, $rules);
+  		 if ($validator->fails()){ //Si el control es incorrecte no entrarà la imatge.
+  		   flash("Verifica el captcha.", 'danger');
          return redirect('/preguntes');
-       }
-       else {
+  		 }
+       else { //Si el CAPTCHA es vàlid passa a fer el control pertinent.
+      // --- FI CONTROL CAPTCHA
 
-         if($request->hasFile('imatge')){
-           $filename = time() . '.' . $imatge->getClientOriginalExtension();
-           Image::make($imatge)->resize(300,300)->save(public_path('uploads/imatges/' . $filename));
+            //  if ($nivell=="" || $pregunta=="" || $descripcio=="" || $imatge=="" || $respostaCorrecte=="" || $respostaIncorrecte1==""){
+            if ($pregunta=="" || $descripcio=="" || $imatge=="" || $respostaCorrecte=="" || $respostaIncorrecte1==""){
 
-         //Afegim les dades de la pregunta a la taula Preguntes.
-         $id = DB::table('preguntes')->insertGetId
-         (
-            ['pregunta' => $pregunta, 'descripcio' => $descripcio, 'imatge' => $filename, 'estat' => 0, 'nivell' => $nivell]
-         );
+               flash("No s'ha afegit la pregunta, comprova que els camps obligatoris són correctes.", 'danger');
 
+               return redirect('/preguntes');
+             }
+             else {
 
-         //Ara afegim les dades de les repostes a la taula Respostes. Aprofitem la variable $id que agafa l'id de la pregunta per fer la relació a la pregunta.
-         DB::table('respostes')->insert
-         (
-            ['resposta' => $respostaCorrecte, 'id_pregunta' => $id, 'correcte' => 'si']
-         );
-         //Afegim ara les respostes incorrectes.
-         DB::table('respostes')->insert
-         (
-            ['resposta' => $respostaIncorrecte1, 'id_pregunta' => $id, 'correcte' => 'no']
-         );
-         //Respostes incorrectes opcionals
-         if ($respostaIncorrecte2!="")
-         {
-           DB::table('respostes')->insert
-           (
-              ['resposta' => $respostaIncorrecte2, 'id_pregunta' => $id, 'correcte' => 'no']
-           );
-         }
-         else if ($respostaIncorrecte3!="")
-         {
-           DB::table('respostes')->insert
-           (
-              ['resposta' => $respostaIncorrecte3, 'id_pregunta' => $id, 'correcte' => 'no']
-           );
-         }
+               if($request->hasFile('imatge')){
+                 $filename = time() . '.' . $imatge->getClientOriginalExtension();
+                 Image::make($imatge)->resize(300,300)->save(public_path('uploads/imatges/' . $filename));
 
+               //Afegim les dades de la pregunta a la taula Preguntes.
+               $id = DB::table('preguntes')->insertGetId
+               (
+                  ['pregunta' => $pregunta, 'descripcio' => $descripcio, 'imatge' => $filename, 'estat' => 0]
+               );
 
+               //Ara afegim les dades de les repostes a la taula Respostes. Aprofitem la variable $id que agafa l'id de la pregunta per fer la relació a la pregunta.
+               DB::table('respostes')->insert
+               (
+                  ['resposta' => $respostaCorrecte, 'id_pregunta' => $id, 'correcte' => 'si']
+               );
+               //Afegim ara les respostes incorrectes.
+               DB::table('respostes')->insert
+               (
+                  ['resposta' => $respostaIncorrecte1, 'id_pregunta' => $id, 'correcte' => 'no']
+               );
+               //Respostes incorrectes opcionals
+               if ($respostaIncorrecte2!="")
+               {
+                 DB::table('respostes')->insert
+                 (
+                    ['resposta' => $respostaIncorrecte2, 'id_pregunta' => $id, 'correcte' => 'no']
+                 );
+               }
+               else if ($respostaIncorrecte3!="")
+               {
+                 DB::table('respostes')->insert
+                 (
+                    ['resposta' => $respostaIncorrecte3, 'id_pregunta' => $id, 'correcte' => 'no']
+                 );
+               }
 
-          flash("Pregunta afegida correctament. La seva pregunta està pendent de revisió, si és correcte, s'aprovarà en les següents hores.", 'success');
-           return redirect('/preguntes');
-         }
+                flash("Pregunta afegida correctament. La seva pregunta està pendent de revisió, si és correcte, s'aprovarà en les següents hores.", 'success');
+                 return redirect('/preguntes');
+               }
 
-       }
+             }
+          }
 
     }
 
@@ -99,36 +109,10 @@ class PreguntesController extends Controller
     public function comprove(){
       $id_resposta = Request()->all();
       $compare = Respostes::all()->where('id_resposta',$id_resposta["resposta"]);
-
       $id_pregunta = $compare[0]['id_pregunta'];
 
       //No retornar vista i fer la comprovació directament al controller, després pasar la puntuació per la barra d'energia
 
-
-
       return view('activitats/resolution',compact('compare'));
     }
-
-    /*
-      Obtenim les preguntes segons el nivell seleccionat utilitzant scopes
-    */
-
-    public function getPreguntes($nivell){
-      if($nivell === '1'){
-        $preguntes = Preguntes::GetPreguntesNivell1()->get();
-        dd($preguntes);
-      }
-      elseif($nivell === '2'){
-        $preguntes = Preguntes::GetPreguntesNivell2()->get();
-        dd($preguntes);
-      }
-      elseif($nivell === '3'){
-        $preguntes = Preguntes::GetPreguntesNivell3()->get();
-        dd($preguntes);
-      }
-
-
-    }
-
-
 }
