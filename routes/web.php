@@ -39,6 +39,10 @@ Route::get('/preguntes', function () {
     return view('puja_preguntes/form_preguntes');
 });
 
+Route::get('/condicions', function () {
+    return view('menu/condicions');
+});
+
 Route::post('/preguntes', 'PreguntesController@novaPregunta');
 
 //PREGUNTES:

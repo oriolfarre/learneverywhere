@@ -174,5 +174,15 @@ footer{
   font-size: 13px;
 }
 .captcha{
+  margin-top: 45px;
   margin-bottom: 25px;
+}
+.certificate {
+  color: white;
+}
+.normes {
+  margin-top: 35px;
+}
+.conducta {
+  margin-left: 15px;
 }
