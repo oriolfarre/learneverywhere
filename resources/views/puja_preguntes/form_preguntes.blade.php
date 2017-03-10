@@ -68,15 +68,20 @@
                         <!-- </button> -->
                         <!-- {!! Form::button('+', array('class' => 'btn btn-success', 'id' => 'nou')) !!} -->
                       </div>
+
                       <div class="captcha">
                         <label for="name" class="control-label">Verifica:</label>
                         {!! app('captcha')->display(); !!}
+                      </div>
+                      <div class="form-group {{ $errors->has('checkbox') ? ' has-error' : '' }}">
+                        {!! Form::checkbox('verifica', 'accept'); !!} <!-- Checkbox on la variable del formulari serà verifica i el valor quan marquem el check serà accept -->
+                        <label for="name" class="control-label"> Accepto les <a href="/condicions">condicions d'ús</a> d'aquesta pàgina web. </label>
                       </div>
 
 
 
                       <div class="pull-left">
-                        <button type="submit" class="btn btn-success">
+                        <button type="submit" class="btn btn-success btn-lg">
                             <i class="fa fa-btn fa-floppy-o icons"></i>Afegir
                         </button>
                       </div>
