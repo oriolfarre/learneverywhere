@@ -94,12 +94,16 @@
             </div>
         </nav>
 
+     
+
         @yield('content')
 
-        <!-- Footer section -->
+
+        
+    </div>
+    <!-- Footer section -->
         @include('layouts.footer')
         <!-- End footer section -->
-    </div>
 
     <!-- Scripts -->
     <script src="/js/app.js"></script>
