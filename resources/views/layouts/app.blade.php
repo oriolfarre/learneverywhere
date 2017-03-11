@@ -39,9 +39,13 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        Learneverywhere
-                    </a>
+                    <div class="logo">
+                      <a href="{{ url('/') }}">
+                          <!-- Learneverywhere -->
+                          <img src="uploads/imatges/logotip.png" alt="Logotip Learneverywhere" height="65" width="65">
+                          <!-- <img src="uploads/imatges/logotip.png" width="100px" height="100px" alt="logo learneverywhere" /> -->
+                      </a>
+                    </div>
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
@@ -94,12 +98,12 @@
             </div>
         </nav>
 
-     
+
 
         @yield('content')
 
 
-        
+
     </div>
     <!-- Footer section -->
         @include('layouts.footer')

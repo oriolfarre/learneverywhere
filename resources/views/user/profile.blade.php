@@ -12,7 +12,7 @@
         <div class="col-md-12">
           <div class="panel panel-default">
             <div class="panel-heading title"><h2>{{ $user->name }}'s profile!</h2></div>
-                <div class="panel-body text">
+                <div class="modal-body text">
 
                     {!! Form::open(array('url' => '/profile', 'files'=>true, 'method' => 'POST')) !!}
                         <label class="pull-left form-group">Canviar imatge de perfil</label><br/><br/>

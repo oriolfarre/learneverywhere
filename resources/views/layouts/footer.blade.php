@@ -19,7 +19,7 @@
           </div>
           <div class="col-3 navbar-text navbar-center">
             <img src="puncat.png"  height="100" width="100">
-            
+            <img src="dinahosting.jpg"  height="80" width="150">
           </div>
           <div class="col-3 navbar-text navbar-right">
             Learneverywhere 2017

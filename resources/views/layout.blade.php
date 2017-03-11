@@ -49,7 +49,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="{{ url('/home') }}">Learneverywhere</a>
+          <a class="navbar-brand" href="{{ url('/home') }}"><img src="logotip.png" width="100px" height="100px" alt="logo learneverywhere"></a>
         </div>
 
         <div id="navbar" class="collapse navbar-collapse">
