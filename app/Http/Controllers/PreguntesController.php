@@ -10,9 +10,16 @@ use Laracasts\Flash\FlashServiceProvider;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
 use Image;
+use Session;
+use Cookie;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
+use App\User;
 
+session_start();
 class PreguntesController extends Controller
 {
+
     public function novaPregunta(Request $request) {
        $nivell = $request->input('nivell');
        $pregunta = $request->input('pregunta');
@@ -98,21 +105,164 @@ class PreguntesController extends Controller
     }
 
     //Obtenir id de pregunta automaticament i anar pasant
-    public function show_pregunta($id){
+    // public function show_pregunta($id){
+    //
+    //   $pregunta = Preguntes::all()->where('id_pregunta', $id);
+    //   $respostes =Respostes::all()->where('id_pregunta', $id);
+    //   return view('activitats/pregunta', compact('pregunta','respostes'));
+    //
+    // }
 
-      $pregunta = Preguntes::all()->where('id_pregunta', $id);
-      $respostes =Respostes::all()->where('id_pregunta', $id);
-      return view('activitats/pregunta', compact('pregunta','respostes'));
 
+
+    /*
+      Obtenim les preguntes segons el nivell seleccionat utilitzant scopes
+    */
+
+    public function getPreguntes($nivell){
+
+      if($nivell === '1'){
+        $preguntes = Preguntes::GetPreguntesNivell1()->get();
+        $_SESSION['preguntes'] = $preguntes;
+        $_SESSION['count'] = 0;
+        if(!isset($_SESSION['score']) || ($_SESSION['score'] >= 100) || ($_SESSION['score'] <= 0)){
+            $_SESSION['score'] = 50;
+        }
+        //return redirect('/activitat');
+        return $this->getRespostes();
+
+
+      }
+      elseif($nivell === '2'){
+        $preguntes = Preguntes::GetPreguntesNivell2()->get();
+        $_SESSION['preguntes'] = $preguntes;
+        $_SESSION['count'] = 0;
+        if(!isset($_SESSION['score']) || ($_SESSION['score'] >= 100) || ($_SESSION['score'] <= 0)){
+            $_SESSION['score'] = 40;
+        }
+
+        return $this->getRespostes();
+      }
+      elseif($nivell === '3'){
+        $preguntes = Preguntes::GetPreguntesNivell3()->get();
+        $_SESSION['preguntes'] = $preguntes;
+        $_SESSION['count'] = 0;
+        if(!isset($_SESSION['score']) || ($_SESSION['score'] >= 100) || ($_SESSION['score'] <= 0)){
+            $_SESSION['score'] = 30;
+        }
+
+        return $this->getRespostes();
+
+      }
+
+
+    }
+
+    public function getRespostes(){
+      // Obtenim la id de la pregunta i busquem les respostes
+
+      $id_pregunta = $_SESSION['preguntes'][$_SESSION['count']]['id_pregunta'];
+
+      $respostes = Respostes::where('id_pregunta', $id_pregunta)
+                  ->inRandomOrder()
+                  ->get();
+      // Tenim les respostes, hem de fer un return a la vista activitat
+      //dd($respostes);
+      return view('activitats/activitat', compact('respostes'));
     }
 
     public function comprove(){
       $id_resposta = Request()->all();
-      $compare = Respostes::all()->where('id_resposta',$id_resposta["resposta"]);
+
+      $compare = Respostes::where('id_resposta',$id_resposta["resposta"])
+                ->inRandomOrder()
+                ->get();
+
       // $id_pregunta = $compare[0]['id_pregunta'];
 
-      //No retornar vista i fer la comprovació directament al controller, després pasar la puntuació per la barra d'energia
+      foreach ($compare as $comp){
+          if($comp->correcte == 'si'){
+              // SI ES CORRECTE
+              if($_SESSION['preguntes'][0]['nivell'] == 1){
+                $_SESSION['score'] = $_SESSION['score'] + 10;
+              }
+              elseif($_SESSION['preguntes'][0]['nivell'] == 2){
+                $_SESSION['score'] = $_SESSION['score'] + 8;
+              }
+              elseif($_SESSION['preguntes'][0]['nivell'] == 3){
+                $_SESSION['score'] = $_SESSION['score'] + 5;
+              }
 
-      return view('activitats/resolution',compact('compare'));
+          }
+          else{
+            // SI ES INCORRECTE
+            if($_SESSION['preguntes'][0]['nivell'] == 1){
+              $_SESSION['score'] = $_SESSION['score'] - 10;
+            }
+            elseif($_SESSION['preguntes'][0]['nivell'] == 2){
+              $_SESSION['score'] = $_SESSION['score'] - 15;
+            }
+            elseif($_SESSION['preguntes'][0]['nivell'] == 3){
+              $_SESSION['score'] = $_SESSION['score'] - 20;
+            }
+
+          }
+      }
+
+      if($_SESSION['score'] >= 100){
+          //dd($_SESSION['preguntes'][0]['nivell']);
+          if($_SESSION['preguntes'][0]['nivell'] == 1)
+            $final_score = 10;
+          elseif ($_SESSION['preguntes'][0]['nivell'] == 2)
+            $final_score = 20;
+          elseif ($_SESSION['preguntes'][0]['nivell'] == 3)
+            $final_score = 30;
+
+          if (Auth::check()) {
+              // The user is logged in...
+              $user_id = \Auth::id();
+
+              //$actual_score = User::\Auth::id();
+
+              return view('activitats/congratulations',compact('final_score'));
+
+          }
+          else{
+              return view('activitats/outcongratulations');
+          }
+
+      }
+      elseif ($_SESSION['score'] <= 0) {
+        return view('activitats/perdut');
+      }{
+
+      }
+
+      $_SESSION['count'] = $_SESSION['count'] + 1;
+      if(count($_SESSION['preguntes']) > $_SESSION['count']){
+
+        //id de la próxima pregunta
+        $id_pregunta = $_SESSION['preguntes'][$_SESSION['count']]['id_pregunta'];
+        // respostes de la pregunta
+        $respostes = Respostes::where('id_pregunta', $id_pregunta)
+                    ->inRandomOrder()
+                    ->get();
+
+        return view('activitats/activitat', compact('respostes'));
+      }
+
+      else{
+        // Quan s'acaben les preguntes, tornem a l'inici
+        $nivell = $_SESSION['preguntes'][0]['nivell'];
+        return redirect('nivell/' . $nivell);
+      }
+
     }
+
+    /*public function sessionRestart(){
+      dd('asdasd');
+      $_SESSION['score'] = 0;
+    }*/
+
+
 }

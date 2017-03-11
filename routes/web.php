@@ -22,6 +22,8 @@ Route::get('/', function () {
     return redirect('/home');
 });
 
+Route::get('/home', 'PreguntesController@sessionRestart');
+
 Route::get('/home', function () {
     return view('home');
 });
@@ -39,16 +41,21 @@ Route::get('/preguntes', function () {
     return view('puja_preguntes/form_preguntes');
 });
 
+
+// Route::get('/activitats', function () {
+//     return view('activitats/preguntes');
+// });
+
+
+
 Route::post('/preguntes', 'PreguntesController@novaPregunta');
 
 //PREGUNTES:
 
+Route::get('/activitat', function () {
+    return view('activitats/activitat');
+});
+
 Route::get('nivell/{nivell}', 'PreguntesController@getPreguntes');
 
-Route::get('activitats', 'PreguntesController@list');
-
-Route::get('activitats/{id_pregunta}', 'PreguntesController@show_pregunta');
-
-
 Route::get('resolution', 'PreguntesController@comprove');
-//Route::get('/home', 'HomeController@index');
