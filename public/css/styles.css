@@ -217,7 +217,17 @@ footer{
 }
 .normes {
   margin-top: 35px;
+  color: white;
 }
 .conducta {
   margin-left: 15px;
+  color: white;
+}
+
+li.normes{
+  list-style-type:circle;
+  margin-top: 2px;
+}
+.modal-body{
+  color: black;
 }
