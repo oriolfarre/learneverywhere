@@ -4,7 +4,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container activitat">
   <!-- Modal Ajuda-->
   <div id="ajuda" class="modal fade" role="dialog">
     <div class="modal-dialog">
