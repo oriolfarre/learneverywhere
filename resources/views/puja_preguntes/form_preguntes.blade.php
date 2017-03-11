@@ -9,7 +9,7 @@
     <div class="row">
       <div class="col-md-12 col-md-offset-0">
         @include('flash::message')
-          <div class="panel panel-default">
+          <div class="panel panel-default preg-margin">
               <div class="panel-heading">Afegir preguntes</div>
               <div class="panel-body">
                 <div class="col-md-12 form_preguntes">
