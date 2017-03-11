@@ -162,7 +162,11 @@ h1{
 
 .bg-footer .navbar-text{
   color: #fff !important;
-  vertical-align: middle;
+  /*vertical-align: middle;*/
+}
+
+.learnev-middle{
+  vertical-align: middle
 }
 
 article{
@@ -172,7 +176,7 @@ footer{
   position: absolute;
   bottom: 0px;
   width: 100%;
-  height: 13%;
+  height: 150px;
   right: 0px;
   left: 0px;
   color: #fff;
@@ -188,6 +192,10 @@ footer{
   border-radius:50%;
 }
 
+.prof-margin{
+  margin-bottom: 150px;
+}
+
 .profile-score{
   margin-top: 60px;
 }
@@ -198,8 +206,10 @@ footer{
 
 /* PUJAR PREGUNTES */
 .preg-margin{
-  margin-bottom: 150;
+  margin-bottom: 150px;
 }
+
+
 
 .form_preguntes{
   color: black;
