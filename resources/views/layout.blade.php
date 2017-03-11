@@ -34,9 +34,11 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <link href="css/app.css" rel="stylesheet">
+
   </head>
 
-  <body>
+  <body class="{{ Request::segment(1) === 'home' ? 'home-content' : null }}">
 
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
@@ -47,13 +49,19 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Learneverywhere</a>
+          <a class="navbar-brand" href="{{ url('/home') }}"><img src="logotip.png" width="100px" height="100px" alt="logo learneverywhere"></a>
         </div>
+
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li class="{{ Request::segment(1) === 'nosaltres' ? 'active' : null }}">
+            <a href="{{ url('/nosaltres') }}">Nosaltres</a>
+
+            <li class="{{ Request::segment(1) === 'nivells' ? 'active' : null }}">
+            <a href="{{ url('/nivells') }}">Nivells</a>
+
+            <li class="{{ Request::segment(1) === 'puja_preguntes' ? 'active' : null }}">
+            <a href="{{ url('/preguntes') }}">Afegir preguntes</a>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -69,6 +77,7 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
     <script src="../../dist/js/bootstrap.min.js"></script>
@@ -77,5 +86,8 @@
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+
+    <script src="js/libs.js"></script>
+    @yield('scripts')
   </body>
 </html>

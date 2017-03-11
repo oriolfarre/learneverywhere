@@ -12,7 +12,7 @@ return [
     | any other location as required by the application or its packages.
     */
 
-    'name' => 'Laravel',
+    'name' => 'Learneverywhere',
 
     /*
     |--------------------------------------------------------------------------
@@ -162,7 +162,8 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-
+        'Collective\Html\HtmlServiceProvider',
+	      Laracasts\Flash\FlashServiceProvider::class,
         /*
          * Package Service Providers...
          */
@@ -176,6 +177,10 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class,
+        //'Barryvdh\Debugbar\ServiceProvider',
+        Anhskohbo\NoCaptcha\NoCaptchaServiceProvider::class,
+
 
     ],
 
@@ -225,7 +230,11 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-
+        'Form' => 'Collective\Html\FormFacade',
+        'Html' => 'Collective\Html\HtmlFacade',
+        'Image' => Intervention\Image\Facades\Image::class,
+        'Debugbar' => 'Barryvdh\Debugbar\Facade',
+        'NoCaptcha' => 'Anhskohbo\NoCaptcha\Facades\NoCaptcha',
     ],
 
 ];
