@@ -141,9 +141,14 @@ h1{
 }
 
 .owl-carousel .item{
-  background-color: #e46d48;
+  background-color: #39D084;
   height: 200px;
+  border-radius: 5px;
+  transition: all .2s ease-in-out;
+  margin-bottom: 50px;
 }
+/*.grow { transition: all .2s ease-in-out; }*/
+.owl-carousel .item:hover { transform: scale(1.1); }
 
 .owl-carousel h2 {
     color: #FFF;
@@ -224,6 +229,7 @@ footer{
 }
 .certificate {
   color: white;
+  margin-bottom: 150px;
 }
 .normes {
   margin-top: 35px;
