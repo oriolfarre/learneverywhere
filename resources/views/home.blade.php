@@ -43,7 +43,7 @@
           <div class="owl-carousel owl-theme">
               <div class="item"><h2><a href="{{ url('nivell/1') }}">Level 1</a></h2></div>
               <div class="item"><h2><a href="{{ url('nivell/2') }}">Level 2</a></h2></div>
-              <div class="item"><h2><a href="{{ url('nivell/2') }}">Level 3</a></h2></div>
+              <div class="item"><h2><a href="{{ url('nivell/3') }}">Level 3</a></h2></div>
 
 
           </div>

@@ -16,17 +16,6 @@ Junts hem desenvolupat una aplicació per aprendre angles, en la que l'usuari re
               <li>Raúl Sanchez Robles</li>
               <li>Alexander Bruno </li>
             </ul>
-
-            Variable = {{ $pepe = 60 }}
-
-            <div class="progress">
-              <div class="progress-bar {{ $pepe < 30 ? 'progress-bar-danger' : null}} progress-bar-striped active" role="progressbar"
-              aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:{{$pepe}}%">
-
-
-              </div>
-            </div>
-
         </div>
     </div>
 </div>
