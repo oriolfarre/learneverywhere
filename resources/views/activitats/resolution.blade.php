@@ -3,6 +3,7 @@
 @section('content')
 
 @foreach ($compare as $comp)
+	
     @if ($comp->correcte == 'si')
         <p style="color: green;">Correcto</p>
 

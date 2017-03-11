@@ -177,7 +177,11 @@ footer{
 
   bottom: 0px;
   width: 100%;
+<<<<<<< Updated upstream
   height: 80px;
+=======
+  height: 20%;
+>>>>>>> Stashed changes
   right: 0px;
   left: 0px;
   color: #fff;
@@ -231,3 +235,10 @@ li.normes{
 .modal-body{
   color: black;
 }
+<<<<<<< Updated upstream
+=======
+
+.emails{
+  color:#f04949;
+}
+>>>>>>> Stashed changes

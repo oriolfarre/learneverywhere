@@ -12,9 +12,15 @@ Junts hem desenvolupat una aplicació per aprendre angles, en la que l'usuari re
             <h3>Participants:</h3>
 
             <ul>
+<<<<<<< Updated upstream
               <li>Oriol Farré Lizana</li>
               <li>Raúl Sanchez Robles</li>
               <li>Alexander Bruno </li>
+=======
+              <li>Oriol Farré Lizana: <span class="emails">farre.lizana.oriol@gmail.com</span> </li>
+              <li>Raúl Sanchez Robles: <span class="emails">raulsanchezrobles14@gmail.com</span></li>
+              <li>Alexander Bruno Lima: <span class="emails">alexander.bruno1995@gmail.com</span></li>
+>>>>>>> Stashed changes
             </ul>
         </div>
     </div>
