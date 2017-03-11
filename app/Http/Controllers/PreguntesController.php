@@ -29,6 +29,7 @@ class PreguntesController extends Controller
        $respostaIncorrecte1 = $request->input('resposta_incorrecte1');
        $respostaIncorrecte2 = $request->input('resposta_incorrecte2');
        $respostaIncorrecte3 = $request->input('resposta_incorrecte3');
+       $checkbox = $request->input('verifica');
        // --- INICI CONTROL CAPTCHA
        $data = Input::all();
   	   $rules = array(
@@ -46,6 +47,12 @@ class PreguntesController extends Controller
             if ($pregunta=="" || $descripcio=="" || $imatge=="" || $respostaCorrecte=="" || $respostaIncorrecte1==""){
 
                flash("No s'ha afegit la pregunta, comprova que els camps obligatoris són correctes.", 'danger');
+
+               return redirect('/preguntes');
+             }
+             else if ($pregunta!="" && $descripcio!="" && $imatge!="" && $respostaCorrecte!="" && $respostaIncorrecte1!="" && $checkbox!="accept"){
+
+               flash("Per afegir la pregunta has d'acceptar les nostres condicions.", 'danger');
 
                return redirect('/preguntes');
              }
