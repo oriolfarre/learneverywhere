@@ -4,7 +4,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container activitat">
     <div class="row">
       <div class="col-md-12">
         <h1>Pregunta de nivell {{ $_SESSION['preguntes'][$_SESSION['count']]['nivell'] }}</h1>

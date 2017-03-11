@@ -239,7 +239,11 @@ class PreguntesController extends Controller
               // The user is logged in...
               $user_id = \Auth::id();
 
-              //$actual_score = User::\Auth::id();
+              $actual_score = Auth::user()->punts;
+              $user = User::find($user_id);
+              $actual_score = $actual_score + $final_score;
+              $user->punts = $actual_score;
+              $user->save();
 
               return view('activitats/congratulations',compact('final_score'));
 
