@@ -79,8 +79,18 @@ class PreguntesController extends Controller
                   ['resposta' => $respostaIncorrecte1, 'id_pregunta' => $id, 'correcte' => 'no']
                );
                //Respostes incorrectes opcionals
-               if ($respostaIncorrecte2!="")
+               if ($respostaIncorrecte2!="" && $respostaIncorrecte3!="")
                {
+                 DB::table('respostes')->insert
+                 (
+                    ['resposta' => $respostaIncorrecte2, 'id_pregunta' => $id, 'correcte' => 'no']
+                 );
+                 DB::table('respostes')->insert
+                 (
+                    ['resposta' => $respostaIncorrecte3, 'id_pregunta' => $id, 'correcte' => 'no']
+                 );
+               }
+               else if($respostaIncorrecte2!=""){
                  DB::table('respostes')->insert
                  (
                     ['resposta' => $respostaIncorrecte2, 'id_pregunta' => $id, 'correcte' => 'no']
