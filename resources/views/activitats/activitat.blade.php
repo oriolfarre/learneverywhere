@@ -29,7 +29,7 @@
             </div>
           @endforeach
 
-          <input type="submit" class="btn btn-success btn-lg" name="Comprova">
+          <input type="submit" class="btn btn-success btn-lg" name="Comprova" value="Enviar resposta!">
           </form>
       </div>
 
